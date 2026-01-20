@@ -1,0 +1,159 @@
+{
+  "restaurants": 
+  [
+    {
+      "restaurant_id": "R001",
+      "name": "Spice Route",
+      "location": "Bangalore",
+      "rating": 4.4,
+      "employees": 
+      [
+        {
+          "employee_id": "E101",
+          "name": "Rahul Mehta",
+          "role": "Manager",
+          "salary": 85000
+        },
+        {
+          "employee_id": "E102",
+          "name": "Ananya Rao",
+          "role": "Head Chef",
+          "salary": 70000
+        },
+        {
+          "employee_id": "E103",
+          "name": "Vikram Singh",
+          "role": "Waiter",
+          "salary": 28000
+        }
+      ],
+      "menu": 
+      [
+        {
+          "food_id": "F201",
+          "name": "Butter Chicken",
+          "category": "Main Course",
+          "price": 420,
+          "is_veg": false
+        },
+        {
+          "food_id": "F202",
+          "name": "Paneer Tikka",
+          "category": "Starter",
+          "price": 320,
+          "is_veg": true
+        },
+        {
+          "food_id": "F203",
+          "name": "Gulab Jamun",
+          "category": "Dessert",
+          "price": 120,
+          "is_veg": true
+        }
+      ]
+    },
+    {
+      "restaurant_id": "R002",
+      "name": "Urban Bites",
+      "location": "Delhi",
+      "rating": 4.1,
+      "employees": 
+      [
+        {
+          "employee_id": "E201",
+          "name": "Kunal Verma",
+          "role": "Manager",
+          "salary": 90000
+        },
+        {
+          "employee_id": "E202",
+          "name": "Sneha Kapoor",
+          "role": "Chef",
+          "salary": 60000
+        },
+        {
+          "employee_id": "E203",
+          "name": "Amit Joshi",
+          "role": "Cashier",
+          "salary": 35000
+        }
+      ],
+      "menu": 
+      [
+        {
+          "food_id": "F301",
+          "name": "Veg Burger",
+          "category": "Fast Food",
+          "price": 180,
+          "is_veg": true
+        },
+        {
+          "food_id": "F302",
+          "name": "Chicken Wrap",
+          "category": "Fast Food",
+          "price": 220,
+          "is_veg": false
+        },
+        {
+          "food_id": "F303",
+          "name": "Cold Coffee",
+          "category": "Beverage",
+          "price": 150,
+          "is_veg": true
+        }
+      ]
+    },
+    {
+      "restaurant_id": "R003",
+      "name": "Coastal Cravings",
+      "location": "Kolkata",
+      "rating": 4.6,
+      "employees": 
+      [
+        {
+          "employee_id": "E301",
+          "name": "Sourav Banerjee",
+          "role": "Owner",
+          "salary": 120000
+        },
+        {
+          "employee_id": "E302",
+          "name": "Mitali Sen",
+          "role": "Chef",
+          "salary": 65000
+        },
+        {
+          "employee_id": "E303",
+          "name": "Rakesh Paul",
+          "role": "Waiter",
+          "salary": 30000
+        }
+      ],
+      "menu": 
+      [
+        {
+          "food_id": "F401",
+          "name": "Fish Curry",
+          "category": "Main Course",
+          "price": 380,
+          "is_veg": false
+        },
+        {
+          "food_id": "F402",
+          "name": "Prawn Malai Curry",
+          "category": "Main Course",
+          "price": 520,
+          "is_veg": false
+        },
+        {
+          "food_id": "F403",
+          "name": "Mishti Doi",
+          "category": "Dessert",
+          "price": 130,
+          "is_veg": true
+        }
+      ]
+    }
+  ]
+
+}

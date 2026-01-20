@@ -139,8 +139,6 @@ x = np.linspace(0, 2*np.pi, 1000)
 
 ## **3. `ravel()` vs `flatten()`**
 
-Here’s the crisp, no-nonsense difference:
-
 **`ravel()`**
 
 * Returns a **view** of the array whenever possible.
@@ -819,3 +817,150 @@ numpy.matmul(A, B)       # or A @ B
 
 <br>
 <br>
+
+---
+## **12. axis confusin**
+
+**Axis = the direction you move to consume elements**
+
+* **axis = 0 → move DOWN (across rows)**
+* **axis = 1 → move RIGHT (across columns)**
+
+That is it.
+Axis does **not** mean “row” or “column” by itself.
+
+---
+
+### Why this rule exists (the mental model you are missing)
+
+A NumPy array is stored as:
+
+```
+array[row][column]
+```
+
+So the **first index (0)** changes rows
+The **second index (1)** changes columns
+
+When NumPy applies an operation along an axis, it **collapses that axis** and works **across it**.
+
+---
+
+### Sorting example (your confusion starts here)
+
+```python
+np.sort(array_2d, axis=0)
+```
+
+### What axis=0 means here
+
+* Collapse axis 0 (rows)
+* Operate **downward**
+* Each column is sorted **top → bottom**
+
+That’s why you call it **column-wise sorting**
+
+```
+↓ ↓ ↓
+13 12  3
+ 8  2  3
+ 5  5 98
+ 2  7  7
+```
+
+Each vertical slice is sorted.
+
+---
+
+```python
+np.sort(array_2d, axis=1)
+```
+
+### axis=1
+
+* Collapse axis 1 (columns)
+* Operate **left → right**
+* Each row is sorted independently
+
+That’s **row-wise sorting**
+
+---
+
+### Deletion example (where you think it is “reversed” — it is not)
+
+```python
+np.delete(original, 1, axis=0)
+```
+
+### axis=0 again
+
+* Move **down**
+* Remove the row at index 1
+
+```text
+[[1 2 3]
+ [4 5 6]  ← removed
+ [7 8 9]]
+```
+
+---
+
+```python
+np.delete(original, 1, axis=1)
+```
+
+### axis=1
+
+* Move **right**
+* Remove column at index 1
+
+```text
+[[1 2 3]      [[1 3]
+ [4 5 6]  →    [4 6]
+ [7 8 9]]      [7 9]]
+```
+
+Still the same rule. Nothing reversed.
+
+---
+
+### Why your brain thinks it’s inconsistent
+
+Because you are mixing **two different questions**:
+
+1. **What direction does the operation run?** → axis rule
+2. **What disappears or changes as a result?** → side effect
+
+Sorting:
+
+* Axis determines **direction of comparison**
+
+Deletion:
+
+* Axis determines **which dimension loses an element**
+
+Same axis meaning. Different outcomes.
+
+---
+
+### One sentence that fixes everything
+
+> **Axis tells NumPy which dimension to collapse, not what you are “operating on”.**
+
+### Edge case check (to prove consistency)
+
+```python
+np.sum(original, axis=0)
+```
+
+→ sums columns (downward)
+
+```python
+np.sum(original, axis=1)
+```
+
+→ sums rows (sideways)
+
+Same rule. Always.
+
+---
