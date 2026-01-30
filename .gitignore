@@ -1,3 +1,5 @@
 venv/
 Python/
 Nural_Network/
+kaggle.json
+Data/chest-xray-pneumonia/
