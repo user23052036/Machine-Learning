@@ -13,7 +13,7 @@ class Linear_Regression():
     # fit the data into out model
     def fit(self, X, Y):
         # number of training examples and number of features
-
+        # X already contains only input features (years_of_experience); target (salary) was manually separated before checking shape
         self.m, self.n = X.shape # no of rows and columns(here n=1)
 
         self.w = np.zeros(self.n) # innitialize weight
