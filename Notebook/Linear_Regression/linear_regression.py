@@ -40,3 +40,38 @@ class Linear_Regression():
     
     def predict(self, X):
         return X.dot(self.w) + self.b
+    
+
+
+"""
+import numpy as np
+
+
+class Linear_Regression():
+
+    def __init__(self, learning_rate, no_of_iterations):
+        self.learning_rate = learning_rate
+        self.no_of_iterations = no_of_iterations
+        self.w = None
+        self.b = 0.0
+
+    def fit(self, X, Y):
+        m, n = X.shape
+        self.w = np.zeros(n)
+        self.b = 0.0
+
+        for _ in range(self.no_of_iterations):
+
+            Y_predicted = X.dot(self.w) + self.b
+            error = Y - Y_predicted
+
+            dw = (-2/m) * X.T.dot(error)
+            db = (-2/m) * np.sum(error)
+
+            self.w -= self.learning_rate * dw
+            self.b -= self.learning_rate * db
+
+    def predict(self, X):
+        return X.dot(self.w) + self.b
+
+"""
