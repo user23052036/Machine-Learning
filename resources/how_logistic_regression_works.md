@@ -18,9 +18,9 @@ better boundary
 
 ## What exactly is ( w^T ) in
 
-[
+$$
 z = w^T x + b
-]
+$$
 
 ### Short answer
 
@@ -34,34 +34,34 @@ Now the real explanation.
 
 In logistic regression with **n features**:
 
-[
+$$
 x =
 \begin{bmatrix}
-x_1 \
-x_2 \
-\vdots \
+x_1 \\
+x_2 \\
+\vdots \\
 x_n
 \end{bmatrix}
 \quad
 \text{(n×1 column vector)}
-]
+$$
 
-[
+$$
 w =
 \begin{bmatrix}
-w_1 \
-w_2 \
-\vdots \
+w_1 \\
+w_2 \\
+\vdots \\
 w_n
 \end{bmatrix}
 \quad
 \text{(n×1 column vector)}
-]
+$$
 
 Bias:
-[
+$$
 b \in \mathbb{R}
-]
+$$
 
 So **both are column vectors**.
 
@@ -71,9 +71,9 @@ So **both are column vectors**.
 
 Matrix multiplication rule:
 
-[
+$$
 (\text{rows of A}) = (\text{columns of B})
-]
+$$
 
 * ( w ): (n × 1)
 * ( x ): (n × 1)
@@ -87,28 +87,28 @@ You **cannot** multiply two column vectors directly.
 
 Transpose turns a column vector into a row vector:
 
-[
+$$
 w^T =
 \begin{bmatrix}
 w_1 & w_2 & \cdots & w_n
 \end{bmatrix}
 \quad (1×n)
-]
+$$
 
 Now:
 
-[
+$$
 w^T x =
 (1×n)(n×1) = (1×1)
-]
+$$
 
 ✔️ A **scalar**
 
 That scalar is:
 
-[
+$$
 w^T x = w_1x_1 + w_2x_2 + \cdots + w_nx_n
-]
+$$
 
 This is just a **dot product**.
 
@@ -124,14 +124,14 @@ It exists because:
 * Logistic regression is a dot product + bias
 
 In beginner explanations, people often write:
-[
+$$
 z = w_1x_1 + w_2x_2 + \cdots + w_nx_n + b
-]
+$$
 
 In compact math:
-[
+$$
 z = w^T x + b
-]
+$$
 
 Same thing.
 
@@ -184,9 +184,9 @@ Answer this:
 
 ## What does
 
-[
+$$
 P(y = 1 \mid x)
-]
+$$
 actually mean?
 
 ### Read it in plain English:
@@ -223,9 +223,9 @@ This is the **event** we care about.
 
 This is the **input feature vector**:
 
-[
+$$
 x = (x_1, x_2, \dots, x_n)
-]
+$$
 
 Example:
 
@@ -237,9 +237,9 @@ Example:
 
 ### 4️⃣ The vertical bar `|` (THIS is the key)
 
-[
+$$
 P(A \mid B)
-]
+$$
 
 means:
 
@@ -247,9 +247,9 @@ means:
 
 So:
 
-[
+$$
 P(y=1 \mid x)
-]
+$$
 
 means:
 
@@ -286,9 +286,9 @@ Suppose:
 
 * ( x = ) (hours studied = 6, sleep = 7)
 * Model outputs:
-  [
+  $$
   P(y=1 \mid x) = 0.82
-  ]
+  $$
 
 Interpretation:
 
@@ -305,9 +305,9 @@ That’s all it means.
 > Probability that y equals 1 **and** x happened
 
 That would be:
-[
+$$
 P(y=1, x)
-]
+$$
 
 Different thing.
 
@@ -317,9 +317,9 @@ Different thing.
 
 > Probability that y equals 1 **given** x
 
-[
+$$
 P(y=1 \mid x)
-]
+$$
 
 This is **conditional probability**.
 
@@ -329,9 +329,9 @@ This is **conditional probability**.
 
 Logistic regression **models this directly**:
 
-[
+$$
 P(y=1 \mid x) = \sigma(w^T x + b)
-]
+$$
 
 So sigmoid is **not arbitrary** — it is the function we assume maps a linear score into a conditional probability.
 
@@ -382,15 +382,15 @@ Let’s pick **one student**:
 | O grade?       | Yes (1) |
 
 So:
-[
+$$
 x =
 \begin{bmatrix}
-6 \
+6 \\
 7
 \end{bmatrix},
 \quad
 y = 1
-]
+$$
 
 ---
 
@@ -398,15 +398,15 @@ y = 1
 
 Randomly (or zeros):
 
-[
+$$
 w =
 \begin{bmatrix}
-0.2 \
+0.2 \\
 0.1
 \end{bmatrix},
 \quad
 b = -1
-]
+$$
 
 ⚠️ These numbers mean nothing yet.
 
@@ -416,17 +416,17 @@ b = -1
 
 Machine computes:
 
-[
+$$
 z = w^T x + b
-]
+$$
 
-[
+$$
 z = (0.2)(6) + (0.1)(7) - 1
-]
+$$
 
-[
+$$
 z = 1.2 + 0.7 - 1 = 0.9
-]
+$$
 
 This is **not** a probability.
 This is just a **score**.
@@ -435,13 +435,13 @@ This is just a **score**.
 
 ## Step 3 — Sigmoid (convert score → probability)
 
-[
+$$
 \hat{y} = \sigma(z) = \frac{1}{1 + e^{-z}}
-]
+$$
 
-[
+$$
 \hat{y} = \frac{1}{1 + e^{-0.9}} \approx 0.71
-]
+$$
 
 Interpretation:
 
@@ -453,9 +453,9 @@ Interpretation:
 
 Threshold = 0.5
 
-[
+$$
 0.71 \ge 0.5 \Rightarrow \text{predict } y = 1
-]
+$$
 
 Prediction matches the truth, **but learning is not done yet**.
 
@@ -464,18 +464,18 @@ Prediction matches the truth, **but learning is not done yet**.
 ## Step 5 — Compute loss (how wrong are we?)
 
 True label:
-[
+$$
 y = 1
-]
+$$
 
 Binary cross-entropy loss:
-[
+$$
 L = -\log(\hat{y})
-]
+$$
 
-[
+$$
 L = -\log(0.71) \approx 0.34
-]
+$$
 
 Meaning:
 
@@ -488,81 +488,81 @@ Meaning:
 
 For logistic regression:
 
-[
+$$
 \frac{\partial L}{\partial z} = \hat{y} - y
-]
+$$
 
-[
+$$
 = 0.71 - 1 = -0.29
-]
+$$
 
 Now gradients w.r.t parameters:
 
-[
+$$
 \frac{\partial L}{\partial w} = (\hat{y} - y)x
-]
+$$
 
-[
+$$
 = -0.29
 \begin{bmatrix}
-6 \
+6 \\
 7
 \end{bmatrix}
-=============
+=
 
 \begin{bmatrix}
--1.74 \
+-1.74 \\
 -2.03
 \end{bmatrix}
-]
+$$
 
-[
+$$
 \frac{\partial L}{\partial b} = \hat{y} - y = -0.29
-]
+$$
 
 ---
 
 ## Step 7 — Update parameters (gradient descent)
 
 Learning rate:
-[
+$$
 \alpha = 0.1
-]
+$$
 
 Update:
 
-[
+$$
 w := w - \alpha \frac{\partial L}{\partial w}
-]
+$$
 
-[
+$$
 w =
 \begin{bmatrix}
-0.2 \
+0.2 \\
 0.1
 \end{bmatrix}
--------------
+-
 
 0.1
 \begin{bmatrix}
--1.74 \
+-1.74 \\
 -2.03
 \end{bmatrix}
-=============
+=
 
 \begin{bmatrix}
-0.374 \
+0.374 \\
 0.303
 \end{bmatrix}
-]
+$$
 
-[
+$$
 b := b - \alpha \frac{\partial L}{\partial b}
-]
+$$
 
-[
+$$
 b = -1 - (0.1)(-0.29) = -0.971
-]
+$$
 
 ---
 
@@ -737,9 +737,9 @@ It cannot learn:
 That’s a **nonlinear rule**.
 
 It can only learn:
-[
+$$
 w_1 \cdot \text{study} + w_2 \cdot \text{sleep} + b \ge 0
-]
+$$
 
 If that rule is wrong for your data, logistic regression will struggle.
 
@@ -803,15 +803,15 @@ Bias is **not** a mysterious extra parameter. It has a **very specific job**.
 
 Logistic regression decision rule:
 
-[
+$$
 z = w^T x + b
-]
+$$
 
 Decision boundary:
 
-[
+$$
 w^T x + b = 0
-]
+$$
 
 This equation defines the **location** of the boundary.
 
@@ -820,14 +820,14 @@ This equation defines the **location** of the boundary.
 ## What happens if there is NO bias?
 
 Assume:
-[
+$$
 b = 0
-]
+$$
 
 Then:
-[
+$$
 w^T x = 0
-]
+$$
 
 This boundary **must pass through the origin**.
 
@@ -852,14 +852,14 @@ In real data, this is almost always wrong.
 ### Geometric intuition (very important)
 
 Imagine 1D case:
-[
+$$
 z = wx + b
-]
+$$
 
 Decision boundary:
-[
+$$
 wx + b = 0 \Rightarrow x = -\frac{b}{w}
-]
+$$
 
 So:
 
@@ -871,9 +871,9 @@ So:
 ## Concrete example (your student case)
 
 Suppose:
-[
+$$
 z = 0.8(\text{study}) + 0.2(\text{sleep}) - 7
-]
+$$
 
 Interpretation:
 
@@ -881,9 +881,9 @@ Interpretation:
 * Student must cross a **minimum threshold** to get O grade
 
 Without bias:
-[
+$$
 z = 0.8(\text{study}) + 0.2(\text{sleep})
-]
+$$
 
 Then:
 
@@ -899,13 +899,13 @@ Then:
 ## Extreme sanity check
 
 If all features are zero:
-[
+$$
 x = 0
 \Rightarrow
 z = b
 \Rightarrow
 \hat y = \sigma(b)
-]
+$$
 
 So:
 
@@ -939,13 +939,13 @@ That’s it.
 
 For logistic regression:
 
-[
+$$
 w := w - \alpha \frac{\partial J}{\partial w}
-]
+$$
 
-[
+$$
 b := b - \alpha \frac{\partial J}{\partial b}
-]
+$$
 
 Forget formulas for a moment. Focus on **signs**.
 
@@ -953,9 +953,9 @@ Forget formulas for a moment. Focus on **signs**.
 
 ## Case 1 — Gradient is POSITIVE
 
-[
+$$
 \frac{\partial J}{\partial w} > 0
-]
+$$
 
 Meaning:
 
@@ -963,10 +963,10 @@ Meaning:
 * You’re on the **right side** of the minimum
 
 So update:
-[
+$$
 w = w - \alpha(\text{positive})
 \Rightarrow w \downarrow
-]
+$$
 
 ✔️ Weight decreases
 
@@ -974,9 +974,9 @@ w = w - \alpha(\text{positive})
 
 ## Case 2 — Gradient is NEGATIVE
 
-[
+$$
 \frac{\partial J}{\partial w} < 0
-]
+$$
 
 Meaning:
 
@@ -984,10 +984,10 @@ Meaning:
 * You’re on the **left side** of the minimum
 
 So update:
-[
+$$
 w = w - \alpha(\text{negative})
 \Rightarrow w \uparrow
-]
+$$
 
 ✔️ Weight increases
 
@@ -995,9 +995,9 @@ w = w - \alpha(\text{negative})
 
 ## Case 3 — Gradient is ZERO
 
-[
+$$
 \frac{\partial J}{\partial w} = 0
-]
+$$
 
 Meaning:
 
@@ -1026,9 +1026,9 @@ You were right — just didn’t have the math confidence yet.
 
 For logistic regression:
 
-[
+$$
 \frac{\partial J}{\partial w} = \frac{1}{m} \sum (\hat y - y)x
-]
+$$
 
 Focus on one data point:
 
@@ -1043,9 +1043,9 @@ The **sign of ( \hat y - y )** decides the direction.
 
 ## Bias update uses SAME logic
 
-[
+$$
 \frac{\partial J}{\partial b} = \frac{1}{m} \sum (\hat y - y)
-]
+$$
 
 * If predictions are globally too high → decrease bias
 * If predictions are globally too low → increase bias

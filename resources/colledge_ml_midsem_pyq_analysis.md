@@ -71,9 +71,9 @@ Others          ██      (8 topics combined)
 **Solution (full):**
 
 Cosine similarity between $\mathbf{u}$ and $\mathbf{v}$:
-[
+$$
 \cos(\mathbf{u},\mathbf{v}) = \frac{\mathbf{u}\cdot\mathbf{v}}{|\mathbf{u}||\mathbf{v}|}.
-]
+$$
 
 Compute norms and dot products.
 
@@ -133,9 +133,9 @@ Cosines:
 
 **Min-Max Normalization (scales to $[0,1]$):**
 Given feature value $x$, minimum $x_{\min}$ and maximum $x_{\max}$:
-[
+$$
 x' = \frac{x - x_{\min}}{x_{\max} - x_{\min}}.
-]
+$$
 
 * Maps $x_{\min}\to 0$, $x_{\max}\to 1$.
 * For general range $[a,b]$: $x' = a + (x-x_{\min})\frac{b-a}{x_{\max}-x_{\min}}$.
@@ -154,9 +154,9 @@ x' = \frac{x - x_{\min}}{x_{\max} - x_{\min}}.
 
 * Probability of class 1 is $p$; odds is $\dfrac{p}{1-p}$.
 * Log-odds (logit) is:
-  [
+  $$
   \operatorname{logit}(p) = \ln!\left(\frac{p}{1-p}\right).
-  ]
+  $$
 * Range: since $p\in(0,1)$, $\dfrac{p}{1-p}\in(0,\infty)$ so $\operatorname{logit}(p)\in(-\infty,+\infty)$.
 * In logistic regression, $\operatorname{logit}(p) = \mathbf{w}^\top\mathbf{x} + b$, which maps linear predictor to full real axis.
 
@@ -176,9 +176,9 @@ Class probabilities:
 * $p(\text{NotSpam}) = 4/10 = 0.4.$
 
 Entropy:
-[
+$$
 H(D) = -\sum_i p_i \log_2 p_i = -\big(0.6\log_2 0.6 + 0.4\log_2 0.4\big).
-]
+$$
 
 Compute numerically:
 
@@ -186,9 +186,9 @@ Compute numerically:
 * $0.4\log_2 0.4 \approx 0.4\times(-1.321928) = -0.5287712$ → negative sign gives $0.5287712$.
 
 Sum:
-[
+$$
 H \approx 0.4421796 + 0.5287712 = 0.9709508.
-]
+$$
 
 **Answer:** $H(D) \approx \mathbf{0.97095}$ bits.
 
@@ -203,15 +203,15 @@ H \approx 0.4421796 + 0.5287712 = 0.9709508.
 **Solution (step-by-step):**
 
 Formulas:
-[
+$$
 \beta_1 = \frac{\sum_i (x_i-\bar{x})(y_i-\bar{y})}{\sum_i (x_i-\bar{x})^2},\quad
 \beta_0 = \bar{y} - \beta_1 \bar{x}.
-]
+$$
 
 Compute means:
-[
+$$
 \bar{x} = (2+3+5+7)/4 = 17/4 = 4.25,\quad \bar{y} = (3+6+9+14)/4 = 32/4 = 8.
-]
+$$
 
 Compute numerator $\sum (x_i-\bar{x})(y_i-\bar{y})$:
 
@@ -226,12 +226,12 @@ Compute numerator $\sum (x_i-\bar{x})(y_i-\bar{y})$:
 Denominator $\sum (x_i-\bar{x})^2 = 5.0625 + 1.5625 + 0.5625 + 7.5625 = 14.75$.
 
 So
-[
+$$
 \beta_1 = \frac{31}{14.75} \approx 2.1016949\quad(\approx 2.102).
-]
-[
+$$
+$$
 \beta_0 = 8 - 2.1016949\times 4.25 \approx 8 - 8.930217 = -0.930217\quad(\approx -0.930).
-]
+$$
 
 **Best-fit line:** $\displaystyle \hat y = 2.1017,x - 0.9302$ (rounded).
 
@@ -264,44 +264,44 @@ Calculate residuals, MAE, MSE, RMSE, $R^2$, and adjusted $R^2$. Comment on model
 3. **Squared residuals:** $r_i^2 = [81, 0.25, 1296, 100]$.
 
 4. **MAE** (mean absolute error):
-   [
+   $$
    \text{MAE} = \frac{1}{4}\sum |r_i| = \frac{9 + 0.5 + 36 + 10}{4} = \frac{55.5}{4} = \mathbf{13.875}.
-   ]
+   $$
 
 5. **MSE** (mean squared error):
-   [
+   $$
    \text{MSE} = \frac{1}{4}\sum r_i^2 = \frac{81 + 0.25 + 1296 + 100}{4} = \frac{1477.25}{4} = \mathbf{369.3125}.
-   ]
+   $$
 
 6. **RMSE**:
-   [
+   $$
    \text{RMSE} = \sqrt{\text{MSE}} = \sqrt{369.3125} \approx \mathbf{19.217505040977613}.
-   ]
+   $$
 
 7. **R²**:
-   [
+   $$
    \bar{y} = \frac{-114 + (-36.5) + 86 + 40}{4} = \frac{-24.5}{4} = -6.125.
-   ]
+   $$
    Total sum of squares (SST):
-   [
+   $$
    \text{SST} = \sum (y_i - \bar{y})^2
    = (-114+6.125)^2 + (-36.5+6.125)^2 + (86+6.125)^2 + (40+6.125)^2
-   ]
+   $$
    Numerically (computed):
-   [
+   $$
    \text{SST} \approx 23174.1875.
-   ]
+   $$
    Sum of squared errors SSE = $\sum r_i^2 = 1477.25$ (from above).
 
 Thus:
-[
+$$
 R^2 = 1 - \frac{\text{SSE}}{\text{SST}} = 1 - \frac{1477.25}{23174.1875} \approx \mathbf{0.9362545073}.
-]
+$$
 
 8. **Adjusted R²** (for simple linear regression with $k=1$ predictor and $n=4$):
-   [
+   $$
    \text{Adj } R^2 = 1 - (1-R^2)\frac{n-1}{n-k-1} = 1 - (1-0.9362545)\frac{3}{2} \approx \mathbf{0.9043817609}.
-   ]
+   $$
 
 **Summary table:**
 
@@ -439,17 +439,17 @@ Three nearest neighbors: all from Class 1 → classify as **Class 1**.
 * **OLS (no regularization):** minimize $\sum (y_i - \mathbf{x}_i^\top\mathbf{w})^2$. Prone to overfitting when features are many or collinear.
 
 * **Ridge regression (L2 penalty):**
-  [
+  $$
   \min_{\mathbf w} \sum_{i}(y_i - \mathbf x_i^\top\mathbf w)^2 + \lambda|\mathbf w|_2^2.
-  ]
+  $$
 
   * Shrinks coefficients toward zero but does not set them exactly to zero.
   * Useful when many features contribute a little; handles multicollinearity.
 
 * **LASSO (L1 penalty):**
-  [
+  $$
   \min_{\mathbf w} \sum_{i}(y_i - \mathbf x_i^\top\mathbf w)^2 + \lambda|\mathbf w|_1.
-  ]
+  $$
 
   * Can produce sparse solutions (some coefficients exactly zero) → feature selection.
   * Useful when only a few features are relevant.
@@ -469,12 +469,12 @@ Three nearest neighbors: all from Class 1 → classify as **Class 1**.
 1. Compute class priors $P(\text{Default=Yes})$ and $P(\text{Default=No})$ from table (count rows).
 2. Compute conditional probabilities for each attribute given each class (counts divided by class counts). Apply Laplace smoothing **if any probability is zero** (none needed if all counts nonzero).
 3. Compute posterior proportional to prior × product of conditionals:
-   [
+   $$
    P(\text{Yes}\mid X) \propto P(\text{Yes})\prod P(\text{attr}\mid \text{Yes}),
-   ]
-   [
+   $$
+   $$
    P(\text{No}\mid X) \propto P(\text{No})\prod P(\text{attr}\mid \text{No}).
-   ]
+   $$
 4. Compare posteriors and pick larger.
 
 > The exam’s worked solution used these steps and concluded whether default = Yes/No depending on computed posteriors. (If you want, I can reproduce with the exact counts from the image row-by-row — tell me to include full numeric table and calculation.)
@@ -509,9 +509,9 @@ Compute likelihoods:
 
 * $P(X|M) = 0.5\times0.25\times0.75\times0.25 = 0.5\times0.25\times0.1875 = 0.0234375\times?$
   (do the multiplication carefully:)
-  [
+  $$
   0.5\times0.25 = 0.125,\quad 0.125\times0.75 = 0.09375,\quad 0.09375\times0.25=0.0234375.
-  ]
+  $$
   Posterior (unnormalized): $P(M|X)\propto 0.5\times0.0234375 = 0.01171875$.
 
 * $P(X|H) = 0.25\times1.0\times0.5\times0.75 = 0.09375.$
@@ -556,21 +556,21 @@ Comparing: $0.046875 > 0.01171875$ → **Class = H**.
 Hyperplane in form $\mathbf w^\top \mathbf x + b = 0$ with $\mathbf w = (1,-1,1,-1,1)$ and $b = 1$.
 
 Distance formula:
-[
+$$
 \text{distance} = \frac{|\mathbf w^\top x_0 + b|}{|\mathbf w|}.
-]
+$$
 
 Compute numerator:
-[
+$$
 \mathbf w^\top x_0 + b = (1-1+1-1+1) + 1 = (1) + 1 = 2.
-]
+$$
 
 Compute $|\mathbf w| = \sqrt{1^2 + (-1)^2 + 1^2 + (-1)^2 + 1^2} = \sqrt{5}$.
 
 Thus:
-[
+$$
 \text{distance} = \frac{2}{\sqrt{5}} \approx 0.894427191.
-]
+$$
 
 ---
 
@@ -591,23 +591,23 @@ Goal: find hyperplane $\mathbf w^\top\mathbf x + b = 0$ that separates classes w
 **2. Margin & primal problem**
 
 For linearly separable data, constraints for correct classification with margin at least $1$:
-[
+$$
 y_i(\mathbf w^\top\mathbf x_i + b) \ge 1,\quad i=1,\dots,n.
-]
+$$
 
 Margin (distance between support hyperplanes) is $\frac{2}{|\mathbf w|}$. Maximizing margin $\Leftrightarrow$ minimizing $\frac{1}{2}|\mathbf w|^2$.
 
 **Primal optimization (hard-margin SVM):**
-[
+$$
 \min_{\mathbf w, b}\ \frac{1}{2}|\mathbf w|^2 \quad\text{s.t.}\quad y_i(\mathbf w^\top\mathbf x_i + b)\ge 1,\ \forall i.
-]
+$$
 
 **3. Lagrangian (to derive dual)**
 
 Introduce Lagrange multipliers $\alpha_i \ge 0$ for each constraint. The primal Lagrangian:
-[
+$$
 \mathcal L(\mathbf w, b, \boldsymbol\alpha) = \frac{1}{2}|\mathbf w|^2 - \sum_{i=1}^n \alpha_i\big[y_i(\mathbf w^\top \mathbf x_i + b) - 1\big].
-]
+$$
 
 **4. KKT conditions — stationary conditions**
 
@@ -620,17 +620,17 @@ Set partial derivatives to zero (primal variables $\mathbf w$ and $b$):
 **5. Dual objective**
 
 Substitute $\mathbf w$ into $\mathcal L$:
-[
+$$
 \mathcal L = \frac{1}{2}|\mathbf w|^2 - \sum_i \alpha_i[y_i(\mathbf w^\top\mathbf x_i + b) - 1].
-]
+$$
 Using $\mathbf w = \sum_j \alpha_j y_j \mathbf x_j$ and doing algebra (standard steps), the dual objective becomes:
-[
+$$
 \max_{\boldsymbol\alpha}\ \sum_{i=1}^n \alpha_i - \frac{1}{2}\sum_{i=1}^n\sum_{j=1}^n \alpha_i\alpha_j y_i y_j (\mathbf x_i^\top\mathbf x_j)
-]
+$$
 subject to:
-[
+$$
 \alpha_i \ge 0,\quad \sum_{i=1}^n \alpha_i y_i = 0.
-]
+$$
 
 **6. Interpretation**
 
@@ -641,9 +641,9 @@ subject to:
 **7. Soft margin (brief note)**
 
 For nonseparable data, introduce slack variables $\xi_i\ge 0$ and penalty $C$:
-[
+$$
 \min_{\mathbf w,b,\xi} \frac{1}{2}|\mathbf w|^2 + C\sum_i \xi_i \quad\text{s.t.}\quad y_i(\mathbf w^\top\mathbf x_i + b)\ge 1-\xi_i.
-]
+$$
 Dual changes accordingly and constraints include $0\le\alpha_i\le C$.
 
 ---
