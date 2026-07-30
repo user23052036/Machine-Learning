@@ -82,9 +82,9 @@ Entropy measures **uncertainty**.
 
 Formula:
 
-[
+$$
 \text{Entropy} = - \sum p_i \log_2(p_i)
-]
+$$
 
 Where:
 
@@ -100,14 +100,13 @@ Class probabilities:
 * Versicolor = 3/10
 * Virginica = 4/10
 
-[
+$$
 H = -\Big(
 0.3\log_2 0.3
-
-* 0.3\log_2 0.3
-* 0.4\log_2 0.4
+\;+\; 0.3\log_2 0.3
+\;+\; 0.4\log_2 0.4
   \Big)
-  ]
+  $$
 
 ≈ **1.57 bits**
 
@@ -121,17 +120,17 @@ Simpler than entropy.
 
 Formula:
 
-[
+$$
 \text{Gini} = 1 - \sum p_i^2
-]
+$$
 
 Same probabilities:
 
-[
+$$
 G = 1 - (0.3^2 + 0.3^2 + 0.4^2)
 = 1 - (0.09 + 0.09 + 0.16)
 = 0.66
-]
+$$
 
 Interpretation:
 
@@ -175,9 +174,9 @@ Probabilities:
 * 3/7, 4/7
 
 Gini:
-[
+$$
 1 - (3/7)^2 - (4/7)^2 ≈ 0.49
-]
+$$
 
 ---
 
@@ -185,11 +184,11 @@ Gini:
 
 Tree computes **weighted average**:
 
-[
+$$
 \text{Gini}_{split}
 = \frac{3}{10}(0) + \frac{7}{10}(0.49)
 = 0.343
-]
+$$
 
 ---
 
@@ -197,13 +196,13 @@ Tree computes **weighted average**:
 
 The tree compares:
 
-[
+$$
 \text{Gain} = \text{Impurity before} - \text{Impurity after}
-]
+$$
 
-[
+$$
 = 0.66 - 0.343 = 0.317
-]
+$$
 
 **Big reduction in confusion → good split**
 
@@ -309,9 +308,9 @@ Regression trees **don’t use entropy or gini**.
 They minimize **variance / MSE**.
 
 For a node:
-[
+$$
 \text{Variance} = \frac{1}{n}\sum (y_i - \bar y)^2
-]
+$$
 
 Split chosen to **reduce variance**, not class impurity.
 
