@@ -218,7 +218,7 @@ After substitution and simplification the dual objective (depends only on (\alph
 $$
 \boxed{ \displaystyle
 \max_{\alpha}\ \sum_{i=1}^n \alpha_i
-;-; \tfrac12 \sum_{i=1}^n \sum_{j=1}^n \alpha_i \alpha_j y_i y_j (x_i\cdot x_j)
+- \tfrac12 \sum_{i=1}^n \sum_{j=1}^n \alpha_i \alpha_j y_i y_j (x_i\cdot x_j)
 }
 $$
 subject to
@@ -264,7 +264,7 @@ $$
 
 This is equivalent to minimizing hinge loss with regularization:
 $$
-\sum_{i=1}^n \max(0,,1 - y_i(w\cdot x_i + b)) + \frac{\lambda}{2}|w|^2,
+\sum_{i=1}^n \max(0, 1 - y_i(w\cdot x_i + b)) + \frac{\lambda}{2}|w|^2,
 $$
 with (C) and (\lambda) linked by convention.
 
@@ -331,10 +331,10 @@ $$
 ## Hinge loss
 
 $$
-L_{\text{hinge}}(z) = \max(0,,1 - z) =
+L_{\text{hinge}}(z) = \max(0, 1 - z) =
 \begin{cases}
-1 - z & z < 1,[4pt]
-0 & z \ge 1.
+1 - z, & z < 1,\\[4pt]
+0, & z \ge 1.
 \end{cases}
 $$
 

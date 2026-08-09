@@ -240,9 +240,9 @@ These are **z-scores**.
 
 Each value now means:
 
-[
+$$
 z = \frac{x - \mu}{\sigma}
-]
+$$
 
 So:
 
@@ -313,9 +313,9 @@ You’re seeing:
 
 SGD updates:
 
-[
+$$
 w := w - \eta \nabla L
-]
+$$
 
 If one feature has larger magnitude, it produces larger gradients.
 
